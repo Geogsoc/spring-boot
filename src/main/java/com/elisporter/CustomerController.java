@@ -6,13 +6,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static com.elisporter.RegistrationOrigin.*;
+
 @RestController
 @RequestMapping("api/v1/customer")
 public class CustomerController {
 
 @GetMapping
 public List<Customer> getCustomers(){
-    return List.of(new Customer(1,"Jeff", "Casino"),new Customer(2,"Fred", "Betting"));
+    return List.of(new Customer(1,"Jeff", CASINO),new Customer(2,"Fred", BET));
 }
 
 }
