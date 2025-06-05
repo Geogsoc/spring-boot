@@ -7,6 +7,10 @@ import java.util.Objects;
 
 @Entity
 public class Customer {
+
+    //    @Id
+    //    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //    private Integer id;
     @Id
     private Integer id;
     private String name;
