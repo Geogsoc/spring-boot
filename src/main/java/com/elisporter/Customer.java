@@ -1,7 +1,6 @@
 package com.elisporter;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -12,8 +11,11 @@ public class Customer {
     //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //    private Integer id;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+
+    @Enumerated(EnumType.STRING)
     private RegistrationOrigin registrationOrigin;
 
     public Customer() {
