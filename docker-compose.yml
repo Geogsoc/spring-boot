@@ -3,9 +3,10 @@ services:
     container_name: postgres-spring-boot
     image: postgres:latest
     environment:
-      POSTGRES_DB: gambling
-      POSTGRES_USER: gambling
-      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
       PGDATA: /data/postgres
     volumes:
       - db:/data/postgres
