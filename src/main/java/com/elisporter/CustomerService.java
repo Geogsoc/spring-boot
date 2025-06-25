@@ -1,9 +1,11 @@
 package com.elisporter;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
+
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Service
 public class CustomerService {
@@ -24,13 +26,13 @@ public class CustomerService {
     }
 
     public Customer findCustomer(Integer id) {
-        return customerRepository.findById(id).orElseThrow(() -> new IllegalStateException(id + " Not found"));
+        return customerRepository.findById(id).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Customer with ID " + id + " not found"));
     }
 
     public void deleteCustomer(Integer id) {
 
         if (!customerRepository.existsById(id)) {
-            throw new IllegalStateException("Customer with ID " + id + " not found");
+            throw new ResponseStatusException(NOT_FOUND, "Customer with ID " + id + " not found");
         }
 
 
@@ -40,7 +42,7 @@ public class CustomerService {
     public void updateCustomer(Customer customer, Integer id) {
 
         Customer existingCustomer = customerRepository.findById(id)
-                .orElseThrow(() -> new IllegalStateException("Customer with ID " + id + " not found"));
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Customer with ID " + id + " not found"));
 
         existingCustomer.setName(customer.getName());
         existingCustomer.setRegistrationOrigin(customer.getRegistrationOrigin());

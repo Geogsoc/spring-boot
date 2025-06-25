@@ -1,15 +1,16 @@
 package com.elisporter;
 
 import jakarta.persistence.*;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Objects;
 
+
+
 @Entity
+@Slf4j
 public class Customer {
 
-    //    @Id
-    //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //    private Integer id;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -48,6 +49,7 @@ public class Customer {
     }
 
     public void setRegistrationOrigin(RegistrationOrigin registrationOrigin) {
+        log.info("this is logging");
         this.registrationOrigin = registrationOrigin;
     }
 

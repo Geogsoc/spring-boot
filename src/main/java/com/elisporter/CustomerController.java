@@ -2,13 +2,15 @@ package com.elisporter;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/customer")
 public class CustomerController {
     private final CustomerService customerService;
+
 
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
@@ -38,9 +40,8 @@ public class CustomerController {
     @DeleteMapping("{id}")
     public void deleteCustomerById(@PathVariable Integer id) {
 
-         customerService.deleteCustomer(id);
+        customerService.deleteCustomer(id);
     }
-
 
 
 }
