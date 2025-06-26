@@ -49,4 +49,10 @@ public class CustomerService {
 
         customerRepository.save(existingCustomer);
     }
+
+    String sanitiseName(String name){
+
+        return name.toLowerCase().trim().replaceAll(" ", "-");
+    }
+
 }
